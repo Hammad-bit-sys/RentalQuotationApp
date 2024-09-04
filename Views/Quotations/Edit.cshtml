@@ -1,0 +1,77 @@
+﻿@model RentalQuotationApp.Models.Quotation
+
+@{
+    ViewData["Title"] = "Edit Quotation";
+}
+
+<h1>Edit Quotation</h1>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Company" class="control-label"></label>
+        <input asp-for="Company" class="form-control" />
+        <span asp-validation-for="Company" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Branch" class="control-label"></label>
+        <input asp-for="Branch" class="form-control" />
+        <span asp-validation-for="Branch" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CustomerCategory" class="control-label"></label>
+        <input asp-for="CustomerCategory" class="form-control" />
+        <span asp-validation-for="CustomerCategory" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CustomerName" class="control-label"></label>
+        <input asp-for="CustomerName" class="form-control" />
+        <span asp-validation-for="CustomerName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="QuotationExpiry" class="control-label"></label>
+        <input asp-for="QuotationExpiry" class="form-control" type="date" />
+        <span asp-validation-for="QuotationExpiry" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RentalStartDate" class="control-label"></label>
+        <input asp-for="RentalStartDate" class="form-control" type="date" />
+        <span asp-validation-for="RentalStartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RentalEndDate" class="control-label"></label>
+        <input asp-for="RentalEndDate" class="form-control" type="date" />
+        <span asp-validation-for="RentalEndDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="NumberOfVehicles" class="control-label"></label>
+        <input asp-for="NumberOfVehicles" class="form-control" type="number" />
+        <span asp-validation-for="NumberOfVehicles" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TotalRentalSum" class="control-label"></label>
+        <input asp-for="TotalRentalSum" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="TotalRentalSum" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TotalAdditionalCost" class="control-label"></label>
+        <input asp-for="TotalAdditionalCost" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="TotalAdditionalCost" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ApprovalStatus" class="control-label"></label>
+        <select asp-for="ApprovalStatus" class="form-control">
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+        </select>
+        <span asp-validation-for="ApprovalStatus" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

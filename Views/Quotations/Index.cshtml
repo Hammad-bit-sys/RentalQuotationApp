@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RentalQuotationApp.Models.Quotation>
+
+<h2>Quotation List</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Company</th>
+            <th>Branch</th>
+            <th>Quotation Date</th>
+            <th>Quotation Expiry Date</th>
+            <th>Total No of Vehicles</th>
+            <th>Total Amount</th>
+            <th>Approval Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Company</td>
+                <td>@item.Branch</td>
+                <td>@item.RentalStartDate.ToShortDateString()</td>
+                <td>@item.QuotationExpiry.ToShortDateString()</td>
+                <td>@item.NumberOfVehicles</td>
+                <td>@item.TotalRentalSum + @item.TotalAdditionalCost</td>
+                <td>@item.ApprovalStatus</td>
+                <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Approve" asp-route-id="@item.Id" class="btn btn-success">Approve</a>
+                        <a asp-action="Reject" asp-route-id="@item.Id" class="btn btn-danger">Reject</a>
+                    }
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary">Create New Quotation</a>
